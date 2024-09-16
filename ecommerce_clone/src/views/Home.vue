@@ -3,7 +3,7 @@
     <Header />
     <div class="controldiv">
       <div>
-        <Category />
+        <Category @cate-val="getval" />
         <img src="../assets/barcode.png" alt="" />
       </div>
       <div class="right">
@@ -19,7 +19,7 @@
     <div class="products">
       <Product />
     </div>
-    <Categorypage/>
+    <Categorypage :cate="clicked" />
     <div class="btn">
       <button>Load More</button>
     </div>
@@ -35,9 +35,19 @@ import Deliverfast from "../components/Deliverfast.vue";
 import Cardslide from "@/components/Cardslide.vue";
 import Product from "@/components/Product.vue";
 import Footer from "@/components/Footer.vue";
-import Categorypage from '../components/Categorypage.vue';
+import Categorypage from "../components/Categorypage.vue";
 export default {
   name: "Home",
+  data() {
+    return {
+      clicked: "",
+    };
+  },
+  methods: {
+    getval(value) {
+      this.clicked = value;
+    },
+  },
   components: {
     Header,
     Category,
